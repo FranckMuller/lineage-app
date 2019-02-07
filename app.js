@@ -1,25 +1,26 @@
-class Person {
-  constructor(race, name) {
+class Character {
+  constructor(name, race, health) {
     this.race = race;
     this.name = name;
+    this.health = health;
   }
 
   welcomeMessage() {
-    console.log(`welcome ${this.name}`);
+    console.log(`welcome ${this.race} - ${this.name}, your health - ${this.health}`);
   }
 }
 
-class Orc extends Person {
-  constructor(race, name, message) {
-    super(race, name);
+class Orc extends Character {
+  constructor(name, message) {
+    super(name, 'Orc', '2000');
     super.welcomeMessage();
     this.message = message;
     this.say();
   }
 
   say() {
-    console.log(this.message)
+    console.log(`${this.message} I\'m ${this.race}`);
   }
 }
 
-const orc = new Orc('Orc', 'Bonobo', 'Loc tarogar - самогон и перегар');
+const orc = new Orc('Bonobo', 'Loc tarogar.... daboo....');
