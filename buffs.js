@@ -4,21 +4,18 @@ class Buff {
     this.duration = duration;
   }
 
-  applyBuff(character) {
+  applyToTarget(character) {
     character.buffs.push(this.name);
     for (let key in this.characteristic) {
-      character.characteristic[key] += this.characteristic[key];
+      character.characteristics[key] += this.characteristics[key];
     }
-    setTimeout(() => {
-      character.welcomeMessage()
-    }, 200)
   }
 }
 
 class Berserker extends Buff {
   constructor() {
     super('berserker', 20*60);
-    this.characteristic = {
+    this.characteristics = {
       speed: 25,
       attackSpeed: 5
     }
@@ -29,7 +26,7 @@ class Berserker extends Buff {
 class WindWalk extends Buff {
   constructor() {
     super('wind walk', 20*60);
-    this.characteristic = {
+    this.characteristics = {
       speed: 50
     }
   }

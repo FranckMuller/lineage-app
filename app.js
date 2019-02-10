@@ -3,7 +3,7 @@ class Character {
     this.race = race;
     this.name = name;
 
-    this.characteristic = {
+    this.characteristics = {
       speed: speed,
       health: health,
       attack: attack,
@@ -16,11 +16,15 @@ class Character {
   welcomeMessage() {
     console.log(`
       welcome ${this.race} - ${this.name},
-      speed: ${this.characteristic.speed},
-      health: ${this.characteristic.health},
-      attack: ${this.characteristic.attack},
-      attackSpeed: ${this.characteristic.attackSpeed},
+      speed: ${this.characteristics.speed},
+      health: ${this.characteristics.health},
+      attack: ${this.characteristics.attack},
+      attackSpeed: ${this.characteristics.attackSpeed},
       buffs: ${this.buffs}`);
+  }
+
+  applyBuff(buff) {
+    buff.applyToTarget(this);
   }
 }
 
@@ -39,5 +43,5 @@ class Orc extends Character {
 
 const orc = new Orc('Bonobo', 'Loc tarogar.... daboo....');
 
-berserker.applyBuff(orc);
-windWalk.applyBuff(orc);
+orc.applyBuff(berserker);
+orc.applyBuff(windWalk);
