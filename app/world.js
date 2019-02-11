@@ -8,14 +8,18 @@ class World {
     }
 
     tick() {
-        console.log('dummy tick');
+        this.characters.forEach(function(character) {
+            character.tick();
+        });
     }
 
     launch() {
-        this.tickerId = setInterval(this.tick, this.tickDuration);
+        this.tickerId = setInterval(this.tick.bind(this), this.tickDuration);
+        this.isOnline = true;
     }
 
     destroy() {
+        this.isOnline = false;
         clearInterval(this.tickerId);
     }
 
