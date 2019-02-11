@@ -2,10 +2,27 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Lineage Sandbox</title>
+
+	<script src="app/buff.js"></script>
+	<script src="app/character.js"></script>
+	<script src="app/world.js"></script>
 </head>
 <body>
-  <script src="./buffs.js"></script>
-	<script src="./app.js"></script>
+	<script type="text/javascript">
+		let world = new World();
+		world.launch();
+
+		let orc = new Orc('m0use');
+		world.addCharacter(orc);
+
+		orc.dumpCommonInfo();
+
+		orc.applyBuff(new WindWalk());
+		orc.applyBuff(new Berserker());
+
+		orc.dumpCommonInfo();
+
+	</script>
 </body>
 </html>
