@@ -11,11 +11,16 @@ class Buff {
   getName() {
     return this.name.toString();
   }
+
+  tickBuff(character) {
+    character.checkForRemoveBuff(this);
+  }
 }
 
 class Berserker extends Buff {
-  constructor() {
+  constructor(character) {
     super('berserker', 20*60);
+    super.tickBuff(character);
   }
 
   applyOnTarget(character) {

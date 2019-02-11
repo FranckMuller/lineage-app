@@ -42,6 +42,19 @@ class Character {
   tick() {
     console.log('character not implemented tick');
   }
+
+  checkForRemoveBuff({ name, duration }) {
+    let buffDuration = duration;
+    const clearId = setInterval(() => {
+      buffDuration--;
+      if(buffDuration === 1198) {
+        const idxBuff = this.buffs.findIndex((buff) => buff.name === name);
+        this.buffs.splice(idxBuff, 1);
+        console.log(this);
+        clearInterval(clearId);
+      }
+    }, 1000)
+  }
 }
 
 class Orc extends Character {
