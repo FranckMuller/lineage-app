@@ -16,6 +16,7 @@ class Character {
     this.health = 0;
 
     this.buffs = [];
+    this.skills = [];
   }
 
   dumpCommonInfo() {
@@ -25,7 +26,9 @@ class Character {
       health: ${this.health},
       attack: ${this.attack},
       attackSpeed: ${this.attackSpeed},
-      buffs: ${JSON.stringify(this.buffs)}`);
+      buffs: ${JSON.stringify(this.buffs)},
+      skills: ${JSON.stringify(this.skills)}
+    `);
   }
 
   applyBuff(buff) {
@@ -34,6 +37,10 @@ class Character {
     } else {
         console.log('failed to apply buff ' + buff.getName());
     }
+  }
+
+  tick() {
+    console.log('character not implemented tick');
   }
 }
 
@@ -45,6 +52,8 @@ class Orc extends Character {
     this.attackSpeed = 500;
     this.attack = 680;
     this.health = 3200;
+
+    this.skills.push(new RageSkill());
   }
 }
 
