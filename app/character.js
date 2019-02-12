@@ -40,8 +40,20 @@ class Character {
   }
 
   tick() {
-    console.log('character not implemented tick');
+    if(this.buffs.length) {
+      this.buffs.forEach((buff, idx) => {
+        buff.tick();
+        if (buff.toBeRemoved()) {
+          buff.removeFromTarget(this);
+          this.buffs.splice(idx, 1);
+          console.log(this);
+        }
+      })
+    } else {
+      console.log('character not implemented tick');
+    }
   }
+  
 }
 
 class Orc extends Character {
