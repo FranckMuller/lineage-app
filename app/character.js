@@ -41,11 +41,12 @@ class Character {
 
   tick() {
     if(this.buffs.length) {
-      this.buffs.forEach((buff) => {
-        buff.tick(this);
-        if(buff.duration === 1195) {
-          let idx = this.buffs.findIndex((el) => el.name === buff.name);
+      this.buffs.forEach((buff, idx) => {
+        buff.tick();
+        if (buff.toBeRemoved()) {
+          buff.removeFromTarget(this);
           this.buffs.splice(idx, 1);
+          console.log(this);
         }
       })
     } else {
