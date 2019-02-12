@@ -1,5 +1,5 @@
-                                             Lineage2 - test application
-                                             ===========================
+#Lineage2 - test application
+***
 
 ## What is it?
 
