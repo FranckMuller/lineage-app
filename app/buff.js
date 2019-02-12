@@ -11,16 +11,11 @@ class Buff {
   getName() {
     return this.name.toString();
   }
-
-  tickBuff(character) {
-    character.checkForRemoveBuff(this);
-  }
 }
 
 class Berserker extends Buff {
-  constructor(character) {
+  constructor() {
     super('berserker', 20*60);
-    super.tickBuff(character);
   }
 
   applyOnTarget(character) {
@@ -30,6 +25,20 @@ class Berserker extends Buff {
     // todo: lower p.def and m.def
 
     return true;
+  }
+
+  removeFromTarget(character) {
+    character.speed -= 15;
+    character.attack -= 20;
+    character.attackSpeed -= 15;
+  }
+
+  tick(character) {
+    this.duration--;
+    if(this.duration === 1195) {
+      this.removeFromTarget(character);
+      console.log(character);
+    }
   }
 }
 
@@ -42,5 +51,17 @@ class WindWalk extends Buff {
     character.speed += 50;
 
     return true;
+  }
+
+  removeFromTarget(character) {
+    character.speed -= 50;
+  }
+
+  tick(character) {
+    this.duration--;
+    if(this.duration === 1195) {
+      this.removeFromTarget(character);
+      console.log(character);
+    }
   }
 }

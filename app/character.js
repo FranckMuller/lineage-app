@@ -40,21 +40,19 @@ class Character {
   }
 
   tick() {
-    console.log('character not implemented tick');
+    if(this.buffs.length) {
+      this.buffs.forEach((buff) => {
+        buff.tick(this);
+        if(buff.duration === 1195) {
+          let idx = this.buffs.findIndex((el) => el.name === buff.name);
+          this.buffs.splice(idx, 1);
+        }
+      })
+    } else {
+      console.log('character not implemented tick');
+    }
   }
-
-  checkForRemoveBuff({ name, duration }) {
-    let buffDuration = duration;
-    const clearId = setInterval(() => {
-      buffDuration--;
-      if(buffDuration === 1198) {
-        const idxBuff = this.buffs.findIndex((buff) => buff.name === name);
-        this.buffs.splice(idxBuff, 1);
-        console.log(this);
-        clearInterval(clearId);
-      }
-    }, 1000)
-  }
+  
 }
 
 class Orc extends Character {
