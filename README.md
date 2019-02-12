@@ -1,8 +1,8 @@
-                          Lineage browser application
+                                                            ### Lineage browser application
 
 ## What is it?
 
-The browser application called linage2 is being developed by volunteer-developers so that all fans of this legendary game can enjoy it easily in their browser
+The test application called linage2 is being developed by volunteer-developers based on a computer MMORPG lineage2 so that all fans of this legendary game can enjoy it easily in their browser
 
 ## launch of the project
 
