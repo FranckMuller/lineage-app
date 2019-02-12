@@ -1,4 +1,5 @@
-                                                            ### Lineage browser application
+                                             Lineage2 - test application
+                                             ===========================
 
 ## What is it?
 
