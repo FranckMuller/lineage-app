@@ -16,7 +16,7 @@ class Character {
     this.health = 0;
 
     this.buffs = [];
-    this.skills = [];
+    this.skills = {};
   }
 
   dumpCommonInfo() {
@@ -29,6 +29,14 @@ class Character {
       buffs: ${JSON.stringify(this.buffs)},
       skills: ${JSON.stringify(this.skills)}
     `);
+  }
+
+  learnSkill(skill) {
+    this.skills[skill.getName()] = skill;
+  }
+
+  useSkill(name) {
+    this.skills[name].use(this);
   }
 
   applyBuff(buff) {
@@ -46,7 +54,6 @@ class Character {
         if (buff.toBeRemoved()) {
           buff.removeFromTarget(this);
           this.buffs.splice(idx, 1);
-          console.log(this);
         }
       })
     } else {
@@ -64,8 +71,6 @@ class Orc extends Character {
     this.attackSpeed = 500;
     this.attack = 680;
     this.health = 3200;
-
-    this.skills.push(new RageSkill());
   }
 }
 

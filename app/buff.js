@@ -58,3 +58,19 @@ class WindWalk extends Buff {
     character.speed -= 50;
   }
 }
+
+class Rage extends Buff {
+  constructor() {
+    super('rage', 5);
+  }
+
+  applyOnTarget(character) {
+    character.attackSpeed += 1000;
+
+    return true;
+  }
+
+  removeFromTarget(character) {
+    character.speed -= 1000;
+  }
+}

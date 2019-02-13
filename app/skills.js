@@ -11,13 +11,21 @@ class Skill {
         this.cooldown = null;
     }
 
+    getName() {
+      return this.name;
+    }
+
+    applyOnTarget(character) {
+      throw new TypeError('applyOnTarget function not implemented');
+    }
+
     validateType() {
         // todo: implement me
     }
 }
 
 
-class BuffSkill extends Skill {
+class BuffSkill extends Skill { 
 
 }
 
@@ -31,12 +39,17 @@ class AOESkill extends Skill{
 
 
 class RageSkill extends BuffSkill {
-    constructor() {
-        super('rage', Skill.typeBuff);
+  constructor(effect) {
+      super('rage', Skill.typeBuff);
 
-        this.effectDuration = 40;
-        this.cooldown = 30;
-    }
+      this.effectDuration = 40;
+      this.cooldown = 30;
+
+      this.effect = effect;
+  }
 
 
+  use(character) {
+    character.applyBuff(new Rage);
+  }
 }
