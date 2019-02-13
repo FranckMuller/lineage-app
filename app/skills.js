@@ -44,12 +44,11 @@ class RageSkill extends BuffSkill {
 
       this.effectDuration = 40;
       this.cooldown = 30;
-
-      this.effect = effect;
   }
 
 
   use(character) {
-    character.applyBuff(new Rage);
+    character.applyBuff(new Rage());
+    console.log(character);
   }
 }

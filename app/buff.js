@@ -65,12 +65,14 @@ class Rage extends Buff {
   }
 
   applyOnTarget(character) {
-    character.attackSpeed += 1000;
+    character.attack += 200;
 
     return true;
   }
 
   removeFromTarget(character) {
-    character.speed -= 1000;
+    character.attack -= 200;
+
+    console.log(character);
   }
 }
