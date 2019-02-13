@@ -15,10 +15,6 @@ class Skill {
       return this.name;
     }
 
-    applyOnTarget(character) {
-      throw new TypeError('applyOnTarget function not implemented');
-    }
-
     validateType() {
         // todo: implement me
     }
@@ -39,7 +35,7 @@ class AOESkill extends Skill{
 
 
 class RageSkill extends BuffSkill {
-  constructor(effect) {
+  constructor() {
       super('rage', Skill.typeBuff);
 
       this.effectDuration = 40;
