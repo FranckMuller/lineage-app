@@ -72,7 +72,5 @@ class Rage extends Buff {
 
   removeFromTarget(character) {
     character.attack -= 200;
-
-    console.log(character);
   }
 }

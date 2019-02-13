@@ -57,10 +57,19 @@ class Character {
         }
       })
     } else {
-      console.log('character not implemented tick');
+      // console.log('character not implemented tick');
+    }
+
+    if(this.skills) {
+      for(let skill in this.skills) {
+        if(!this.skills[skill].isReady) {
+          this.skills[skill].tick();
+        } else {
+          console.log('ready');
+        }
+      }
     }
   }
-  
 }
 
 class Orc extends Character {

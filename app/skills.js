@@ -7,6 +7,7 @@ class Skill {
     constructor(name, type) {
         this.name = name;
         this.type = type;
+        this.isReady = true;
 
         this.cooldown = null;
     }
@@ -17,6 +18,13 @@ class Skill {
 
     validateType() {
         // todo: implement me
+    }
+
+    tick() {
+      if(!this.cooldown <= 0) {
+        this.cooldown--;
+        this.isReady = true;
+      }
     }
 }
 
@@ -39,12 +47,17 @@ class RageSkill extends BuffSkill {
       super('rage', Skill.typeBuff);
 
       this.effectDuration = 40;
-      this.cooldown = 30;
+      this.cooldown = 5;
   }
 
 
   use(character) {
-    character.applyBuff(new Rage());
-    console.log(character);
+    if(this.isReady) {
+      character.applyBuff(new Rage());
+      this.isReady = false;
+      console.log(character);
+    } else {
+      console.log('can not using skill')
+    }
   }
 }
