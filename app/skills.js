@@ -8,8 +8,8 @@ class Skill {
         this.name = name;
         this.type = type;
         this.isReady = true;
-
         this.cooldown = null;
+        this.currentCooldown = null;
     }
 
     getName() {
@@ -21,9 +21,11 @@ class Skill {
     }
 
     tick() {
-      if(!this.cooldown <= 0) {
-        this.cooldown--;
+      this.currentCooldown--;
+      if(this.currentCooldown <= 0) {
         this.isReady = true;
+        this.currentCooldown = this.cooldown;
+        return;
       }
     }
 }
@@ -45,9 +47,9 @@ class AOESkill extends Skill{
 class RageSkill extends BuffSkill {
   constructor() {
       super('rage', Skill.typeBuff);
-
       this.effectDuration = 40;
       this.cooldown = 5;
+      this.currentCooldown = this.cooldown;
   }
 
 
@@ -55,7 +57,6 @@ class RageSkill extends BuffSkill {
     if(this.isReady) {
       character.applyBuff(new Rage());
       this.isReady = false;
-      console.log(character);
     } else {
       console.log('can not using skill')
     }

@@ -33,6 +33,8 @@ class Berserker extends Buff {
     character.attackSpeed += 15;
     // todo: lower p.def and m.def
 
+    console.log('stats is added');
+
     return true;
   }
 
@@ -40,6 +42,7 @@ class Berserker extends Buff {
     character.speed -= 15;
     character.attack -= 20;
     character.attackSpeed -= 15;
+    console.log('stats is removed');
   }
 }
 
@@ -51,11 +54,15 @@ class WindWalk extends Buff {
   applyOnTarget(character) {
     character.speed += 50;
 
+    console.log('stats is added');
+
     return true;
   }
 
   removeFromTarget(character) {
     character.speed -= 50;
+
+    console.log('stats is removed');
   }
 }
 

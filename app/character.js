@@ -41,10 +41,17 @@ class Character {
 
   applyBuff(buff) {
     if (buff.applyOnTarget(this)) {
+
+      console.log('apply buff');
+
       this.buffs.push(buff);
+
+      console.log('add buff in array');
+
     } else {
         console.log('failed to apply buff ' + buff.getName());
     }
+
   }
 
   tick() {
@@ -65,7 +72,7 @@ class Character {
         if(!this.skills[skill].isReady) {
           this.skills[skill].tick();
         } else {
-          console.log('ready');
+          // console.log('ready');
         }
       }
     }
