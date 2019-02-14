@@ -77,9 +77,7 @@ class FrenzySkill extends BuffSkill {
 
   use(character) {
     // todo: change value character.currentHp when will be added property currentHealth in character parent class
-    // remove this character.currentHp = 10;
-    character.currentHp = 10;
-    if(this.isReady() && character.currentHp <= (character.health / 100 * 30)) {
+    if(this.isReady() && character.currentHealth <= (character.health / 100 * 30)) {
       character.applyBuff(new Frenzy());
       this.currentCooldown = this.cooldown;
       console.log(character);
