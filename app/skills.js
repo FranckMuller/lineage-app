@@ -11,6 +11,10 @@ class Skill {
         this.currentCooldown = null;
     }
 
+    use(character) {
+      throw new TypeError('use function not implemented');
+    }
+
     getName() {
       return this.name;
     }
@@ -20,6 +24,7 @@ class Skill {
     }
 
     tick() {
+      console.log(this.currentCooldown);
       this.currentCooldown--;
     }
 
@@ -55,6 +60,26 @@ class RageSkill extends BuffSkill {
     if(this.isReady()) {
       character.applyBuff(new Rage());
       this.currentCooldown = this.cooldown;
+    } else {
+      console.log('can not using skill')
+    }
+  }
+}
+
+class FrenzySkill extends BuffSkill {
+  constructor() {
+      super('frenzy', Skill.typeBuff);
+      this.effectDuration = 40;
+      this.cooldown = 10;
+      this.currentCooldown = 0;
+  }
+
+
+  use(character) {
+    if(this.isReady() && character.currentHealth <= (character.health / 100 * 30)) {
+      character.applyBuff(new Frenzy());
+      this.currentCooldown = this.cooldown;
+      console.log(character);
     } else {
       console.log('can not using skill')
     }
