@@ -81,3 +81,19 @@ class Rage extends Buff {
     character.attack -= 200;
   }
 }
+
+class Frenzy extends Buff {
+  constructor() {
+    super('rage', 5);
+  }
+
+  applyOnTarget(character) {
+    character.attack += 1200;
+
+    return true;
+  }
+
+  removeFromTarget(character) {
+    character.attack -= 1200;
+  }
+}
