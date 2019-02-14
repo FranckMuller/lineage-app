@@ -66,7 +66,7 @@ class RageSkill extends BuffSkill {
   }
 }
 
-class Frenzykill extends BuffSkill {
+class FrenzySkill extends BuffSkill {
   constructor() {
       super('frenzy', Skill.typeBuff);
       this.effectDuration = 40;
@@ -76,9 +76,13 @@ class Frenzykill extends BuffSkill {
 
 
   use(character) {
-    if(this.isReady()) {
+    // todo: change value character.currentHp when will be added property currentHealth in character parent class
+    // remove this character.currentHp = 10;
+    character.currentHp = 10;
+    if(this.isReady() && character.currentHp <= (character.health / 100 * 30)) {
       character.applyBuff(new Frenzy());
       this.currentCooldown = this.cooldown;
+      console.log(character);
     } else {
       console.log('can not using skill')
     }

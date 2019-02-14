@@ -72,7 +72,7 @@ class Character {
         if(!this.skills[skill].isReady()) {
           this.skills[skill].tick();
         } else {
-          console.log(`ready ${this.skills[skill].getName()}`);
+          // console.log(`ready ${this.skills[skill].getName()}`);
         }
       }
     }

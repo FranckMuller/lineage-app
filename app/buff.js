@@ -84,7 +84,7 @@ class Rage extends Buff {
 
 class Frenzy extends Buff {
   constructor() {
-    super('rage', 5);
+    super('frenzy', 5);
   }
 
   applyOnTarget(character) {
