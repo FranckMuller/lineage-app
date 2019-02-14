@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-image: url(./assets/images/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.app {
+  height: 100%;
+  padding: 30px;
+}
+
+.app .skill-panel {
+  width: 30%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 3px solid tomato;
+}
+
+.app .skill-panel .list {
+  display: flex;
+  height: 100%;
+}
+
+.app .skill-panel .list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+}
+
+.app .skill-panel .list li + li {
+  border-left: 3px solid #dddddd;
+}
+
+.video {
+  position: absolute;
+  bottom: 20px;
+  background-color: transparent;
+  height: 52px;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+embed {
+  transform: translateY(-97px);
+}

@@ -1,29 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./app.css">
 	<title>Lineage Sandbox</title>
-
-	<script src="app/buff.js"></script>
-	<script src="app/character.js"></script>
-	<script src="app/skills.js"></script>
-	<script src="app/world.js"></script>
 </head>
 <body>
-	<script type="text/javascript">
+  
+  <div class="app">
+    <div class="skill-panel">
+      <ul class="list">
+        <li id="ww">
+          <img src="./assets/images/ww.png" alt="">
+        </li>
+        <li id="be">
+          <img src="./assets/images/bers.png" alt="">
+        </li>
+        <li id="rage">
+          <img src="./assets/images/rage.png" alt="">
+        </li>
+      </ul>
+    </div>
+    <div class="video">
+       <embed src="./assets/music/Lineage+2+OST+Giran_muzlishko.ru.mp3" type="">
+    </div>
+  </div>
+
+  <script src="app/buff.js"></script>
+	<script src="app/character.js"></script>
+	<script src="app/skills.js"></script>
+  <script src="app/world.js"></script>
+  <script type="text/javascript" defer>
+  
 		let world = new World();
 		world.launch();
-
 		let orc = new Orc('m0use');
 		world.addCharacter(orc);
-
-		orc.dumpCommonInfo();
-
-    orc.applyBuff(new WindWalk());
-		orc.applyBuff(new Berserker());
-
     orc.dumpCommonInfo();
+    
+    window.onload = function(){
 
-	</script>
+      orc.learnSkill(new RageSkill());
+
+      const wwEl = document.getElementById('ww');
+      wwEl.onclick = function() {
+        orc.applyBuff(new WindWalk());
+      }
+      
+      const beEl = document.getElementById('be');
+      beEl.onclick = function() {
+        orc.applyBuff(new Berserker());
+      } 
+
+      const rageEl = document.getElementById('rage');
+      rageEl.onclick = function() {
+        orc.useSkill('rage');
+      } 
+    };
+  </script>
 </body>
 </html>

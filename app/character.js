@@ -16,7 +16,7 @@ class Character {
     this.health = 0;
 
     this.buffs = [];
-    this.skills = [];
+    this.skills = {};
   }
 
   dumpCommonInfo() {
@@ -31,12 +31,27 @@ class Character {
     `);
   }
 
+  learnSkill(skill) {
+    this.skills[skill.getName()] = skill;
+  }
+
+  useSkill(name) {
+    this.skills[name].use(this);
+  }
+
   applyBuff(buff) {
     if (buff.applyOnTarget(this)) {
+
+      console.log('apply buff');
+
       this.buffs.push(buff);
+
+      console.log('add buff in array');
+
     } else {
         console.log('failed to apply buff ' + buff.getName());
     }
+
   }
 
   tick() {
@@ -46,14 +61,22 @@ class Character {
         if (buff.toBeRemoved()) {
           buff.removeFromTarget(this);
           this.buffs.splice(idx, 1);
-          console.log(this);
         }
       })
     } else {
-      console.log('character not implemented tick');
+      // console.log('character not implemented tick');
+    }
+
+    if(this.skills) {
+      for(let skill in this.skills) {
+        if(!this.skills[skill].isReady()) {
+          this.skills[skill].tick();
+        } else {
+          console.log('ready');
+        }
+      }
     }
   }
-  
 }
 
 class Orc extends Character {
@@ -64,8 +87,6 @@ class Orc extends Character {
     this.attackSpeed = 500;
     this.attack = 680;
     this.health = 3200;
-
-    this.skills.push(new RageSkill());
   }
 }
 
