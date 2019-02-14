@@ -69,10 +69,10 @@ class Character {
 
     if(this.skills) {
       for(let skill in this.skills) {
-        if(!this.skills[skill].isReady) {
+        if(!this.skills[skill].isReady()) {
           this.skills[skill].tick();
         } else {
-          // console.log('ready');
+          console.log('ready');
         }
       }
     }

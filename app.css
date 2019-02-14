@@ -40,3 +40,16 @@ body {
 .app .skill-panel .list li + li {
   border-left: 3px solid #dddddd;
 }
+
+.video {
+  position: absolute;
+  bottom: 20px;
+  background-color: transparent;
+  height: 52px;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+embed {
+  transform: translateY(-97px);
+}

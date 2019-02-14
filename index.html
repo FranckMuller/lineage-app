@@ -21,6 +21,9 @@
         </li>
       </ul>
     </div>
+    <div class="video">
+       <embed src="./assets/music/Lineage+2+OST+Giran_muzlishko.ru.mp3" type="">
+    </div>
   </div>
 
   <script src="app/buff.js"></script>
@@ -28,25 +31,13 @@
 	<script src="app/skills.js"></script>
   <script src="app/world.js"></script>
   <script type="text/javascript" defer>
+  
 		let world = new World();
 		world.launch();
-
 		let orc = new Orc('m0use');
 		world.addCharacter(orc);
-
-		orc.dumpCommonInfo();
-
-    // orc.applyBuff(new WindWalk());
-		// orc.applyBuff(new Berserker());
-
-    // orc.dumpCommonInfo();
-    // orc.useSkill('rage');
-    // setTimeout(() => {
-    //   orc.useSkill('rage');
-    // }, 400);
-
-
-
+    orc.dumpCommonInfo();
+    
     window.onload = function(){
 
       orc.learnSkill(new RageSkill());
